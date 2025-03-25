@@ -38,7 +38,7 @@ const EventDetailsScreen = () => {
 
       <ScrollView style={styles.detailsContent}>
         {/* Event Title Section */}
-        <View style={[styles.detailsSection, styles.titleSection]}>
+        <View style={[styles.detailsSection]}>
           <View style={styles.titleRow}>
             <View style={[styles.detailsIconContainer, { backgroundColor: getEventColors(event.type)[0] }]}>
               {getEventIcon(event.type)}
@@ -135,7 +135,7 @@ const EventDetailsScreen = () => {
           //onPress={toggleCompletion}
         >
           <MaterialCommunityIcons name={"check"} size={20} color="#FFFFFF" />
-          <Text style={styles.completeButtonText}>"Mark as Incomplete"</Text>
+          <Text style={styles.completeButtonText}>Mark as Incomplete</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -343,9 +343,6 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     borderBottomWidth: 1,
     borderBottomColor: "#F3F4F6"
-  },
-  titleSection: {
-    backgroundColor: "#F9FAFB"
   },
   titleRow: {
     flexDirection: "row",

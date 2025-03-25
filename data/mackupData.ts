@@ -14,7 +14,7 @@ export const events = [
     notes: "Prescribed by Dr. Wilson on February 15. Dosage: 1 pill.",
     reminder: "15 minutes before",
     repeat: "Monthly",
-    petImage: "https://place.dog/300/300",
+    petImage: "https://place.dog/300/400",
     attachments: [
       { id: "1", name: "Prescription.pdf", icon: "file-pdf-box" },
       { id: "2", name: "Medication_Instructions.jpg", icon: "file-image" }
@@ -53,7 +53,7 @@ export const events = [
     notes: "Use hypoallergenic shampoo. Tommy gets anxious during nail trims.",
     reminder: "30 minutes before",
     repeat: "Monthly",
-    petImage: "https://place.dog/300/300",
+    petImage: "https://place.dog/300/500",
     attachments: []
   },
   {
@@ -89,7 +89,7 @@ export const events = [
     notes: "Bella may need to stay for 15 minutes after for observation. Bring treats.",
     reminder: "1 day before",
     repeat: "Yearly",
-    petImage: "https://place.dog/300/400",
+    petImage: "https://place.dog/300/600",
     attachments: [
       { id: "1", name: "Vaccination_Schedule.pdf", icon: "file-pdf-box" },
       { id: "2", name: "Insurance_Info.pdf", icon: "file-pdf-box" }
@@ -112,7 +112,7 @@ export const pets = [
     breed: "Labrador",
     age: 5,
     birthday: new Date(2020, 6, 15),
-    image: "https://place.dog/300/200"
+    image: "https://place.dog/300/300"
   },
   {
     id: "3",
@@ -120,6 +120,6 @@ export const pets = [
     age: 2,
     breed: "Mixed",
     birthday: new Date(2023, 11, 25),
-    image: "https://place.dog/300/200"
+    image: "https://place.dog/300/400"
   }
 ]

@@ -8,10 +8,10 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-        {/* Header */}
+        {/* Header with Counters */}
         <View style={styles.headerContainer}>
           <View>
-            <Text style={styles.greeting}>Hello, Kevin</Text>
+            <Text style={styles.greeting}>Hello, Márcio</Text>
             <Text style={styles.subGreeting}>Your pets are doing great today</Text>
           </View>
           <TouchableOpacity style={styles.notificationIcon}>
@@ -19,24 +19,50 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
 
-        {/* Upcoming Events */}
+        {/* Counter Cards */}
+        <View style={styles.counterCardsContainer}>
+          <View style={[styles.counterCard, styles.CounterCard]}>
+            <View style={styles.counterCardIconContainer}>
+              <Ionicons name="calendar-outline" size={24} color="#FF7A9D" />
+            </View>
+            <View style={styles.counterCardTextContainer}>
+              <Text style={styles.petName}>{events.length}</Text>
+              <Text style={styles.eventSubtext}>Events Today</Text>
+            </View>
+          </View>
+          <View style={[styles.counterCard, styles.CounterCard]}>
+            <View style={styles.counterCardIconContainer}>
+              <Ionicons name="paw" size={24} color="#FF7A9D" />
+            </View>
+            <View style={styles.counterCardTextContainer}>
+              <Text style={styles.petName}>{pets.length}</Text>
+              <Text style={styles.eventSubtext}>My Pets</Text>
+            </View>
+          </View>
+        </View>
+
+        {/* Upcoming Events - Horizontal Scroll */}
         <View style={styles.sectionContainer}>
           <Text style={styles.sectionTitle}>Today's Events</Text>
-          <View style={styles.eventsCard}>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.eventsScrollContainer}
+          >
             {events.map((item) => (
-              <View key={item.id} style={styles.eventItem}>
+              <View key={item.id} style={styles.eventItemHorizontal}>
                 <View style={[styles.eventIconContainer, { backgroundColor: getEventColors(item.type)[0] }]}>
                   {getEventIcon(item.type)}
                 </View>
                 <View style={styles.eventDetails}>
                   <Text style={styles.eventTitle}>{item.title}</Text>
                   <Text style={styles.eventSubtext}>
-                    {item.pet} - {item.date}
+                    {item.pet} - {item.time}
                   </Text>
                 </View>
               </View>
             ))}
-          </View>
+          </ScrollView>
         </View>
 
         {/* My Pets */}
@@ -64,10 +90,9 @@ const HomeScreen = () => {
           <Text style={styles.sectionTitle}>Quick Actions</Text>
           <View style={styles.quickActionsList}>
             {[
-              { icon: "calendar", title: "Agenda", color: "#007AFF" },
-              { icon: "paw", title: "Pets", color: "#34C759" },
-              { icon: "map", title: "Map", color: "#FF9500" },
-              { icon: "person", title: "Profile", color: "#5856D6" }
+              { icon: "calendar", title: "Add Event", color: "#007AFF" },
+              { icon: "paw", title: "Add Pet", color: "#34C759" },
+              { icon: "map", title: "Map", color: "#FF9500" }
             ].map((action, index) => (
               <TouchableOpacity key={index} style={styles.quickActionButton}>
                 <View style={[styles.quickActionIconContainer, { backgroundColor: action.color + "15" }]}>
@@ -130,8 +155,22 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     marginBottom: 12
   },
-  eventsCard: {
-    marginHorizontal: 16
+  eventsScrollContainer: {
+    paddingHorizontal: 16,
+    paddingVertical: 2
+  },
+  eventItemHorizontal: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
+    borderRadius: 12,
+    padding: 12,
+    marginRight: 12,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2
   },
   eventItem: {
     flexDirection: "row",
@@ -158,7 +197,7 @@ const styles = StyleSheet.create({
     color: "#1F2937"
   },
   eventSubtext: {
-    fontSize: 14,
+    fontSize: 12,
     color: "#6B7280",
     marginTop: 2
   },
@@ -185,7 +224,7 @@ const styles = StyleSheet.create({
     padding: 10
   },
   petName: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: "600",
     color: "#333"
   },
@@ -215,6 +254,41 @@ const styles = StyleSheet.create({
   quickActionText: {
     fontSize: 12,
     color: "#666"
+  },
+  counterCardsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 16,
+    marginBottom: 20
+  },
+  counterCard: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
+    borderRadius: 12,
+    padding: 12,
+    marginRight: 12,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2
+  },
+  CounterCard: {
+    backgroundColor: "#F8F9FA"
+  },
+  counterCardIconContainer: {
+    backgroundColor: "rgba(255,122,157,0.1)",
+    borderRadius: 10,
+    width: 40,
+    height: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: 12
+  },
+  counterCardTextContainer: {
+    justifyContent: "center"
   }
 })
 

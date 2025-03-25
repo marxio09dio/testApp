@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
     color: "#1F2937"
   },
   eventSubtext: {
-    fontSize: 14,
+    fontSize: 12,
     color: "#6B7280",
     marginTop: 2
   },
