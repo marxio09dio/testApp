@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { StyleSheet, Text, View, TouchableOpacity, ViewStyle, TextStyle } from 'react-native'
-import Swipeable, {
-  SwipeableMethods,
-} from "react-native-gesture-handler/ReanimatedSwipeable"
-import { Ionicons } from '@expo/vector-icons'
-import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated'
+import React, { useState, useEffect } from "react"
+import { StyleSheet, Text, View, TouchableOpacity, ViewStyle, TextStyle } from "react-native"
+import Swipeable, { SwipeableMethods } from "react-native-gesture-handler/ReanimatedSwipeable"
+import { Ionicons } from "@expo/vector-icons"
+import Animated, { useAnimatedStyle, useSharedValue } from "react-native-reanimated"
 
 interface SwipeableItemProps {
   swipeableRef?: React.RefObject<SwipeableMethods>
@@ -32,29 +30,29 @@ interface SwipeableItemProps {
 
 const SwipeableItem: React.FC<SwipeableItemProps> = ({
   swipeableRef,
-  onDelete = () => { },
-  onEdit = () => { },
+  onDelete = () => {},
+  onEdit = () => {},
   children,
-  rightActionText = 'Delete',
-  leftActionText = 'Edit',
-  rightActionIcon = 'trash-outline',
-  leftActionIcon = 'pencil-outline',
-  rightActionColor = '#FF3B30',
-  leftActionColor = '#30A0FF',
+  rightActionText = "Delete",
+  leftActionText = "Edit",
+  rightActionIcon = "trash-outline",
+  leftActionIcon = "pencil-outline",
+  rightActionColor = "#FF3B30",
+  leftActionColor = "#30A0FF",
   rightActionWidth = 80,
   leftActionWidth = 80,
   containerStyle = {},
   onSwipeableOpen,
   index = 0,
   baseDuration = 800,
-  delayIncrement = 100,
+  delayIncrement = 100
 }) => {
   // Track whether the entrance animation has completed
   const [isAnimationComplete, setIsAnimationComplete] = useState(false)
   const opacity = useSharedValue(1)
 
   // Calculate total animation time based on index
-  const totalAnimationTime = baseDuration + (index * delayIncrement)
+  const totalAnimationTime = baseDuration + index * delayIncrement
 
   // Set up animation completion after calculated delay
   useEffect(() => {
@@ -70,7 +68,7 @@ const SwipeableItem: React.FC<SwipeableItemProps> = ({
     if (!isAnimationComplete) return null
 
     return (
-      <View style={[containerStyle, { overflow: 'hidden' }]}>
+      <View style={[containerStyle, { overflow: "hidden" }]}>
         <TouchableOpacity
           style={[
             styles.rightAction,
@@ -98,7 +96,7 @@ const SwipeableItem: React.FC<SwipeableItemProps> = ({
     if (!isAnimationComplete) return null
 
     return (
-      <View style={[containerStyle, { overflow: 'hidden' }]}>
+      <View style={[containerStyle, { overflow: "hidden" }]}>
         <TouchableOpacity
           style={[
             styles.leftAction,
@@ -146,8 +144,8 @@ const SwipeableItem: React.FC<SwipeableItemProps> = ({
         <View>{children}</View>
       )}
     </Animated.View>
-  );
-};
+  )
+}
 
 interface Styles {
   container: ViewStyle
@@ -158,23 +156,23 @@ interface Styles {
 
 const styles = StyleSheet.create<Styles>({
   container: {
-    overflow: 'hidden'
+    overflow: "hidden"
   },
   rightAction: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100%',
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%"
   },
   leftAction: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100%',
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%"
   },
   actionText: {
-    color: 'white',
+    color: "white",
     fontSize: 12,
-    marginTop: 3,
-  },
+    marginTop: 3
+  }
 })
 
 export default SwipeableItem
