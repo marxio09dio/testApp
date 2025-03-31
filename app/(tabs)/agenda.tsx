@@ -357,7 +357,7 @@ const AgendaScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFFFF"
+    backgroundColor: "#F9FAFB"
   },
   header: {
     paddingHorizontal: 16,
